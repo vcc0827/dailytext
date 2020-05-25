@@ -1,4 +1,4 @@
-sass实现px转rem的方法：
+sass实现px转rem的方法一：
 //只能在拥有一个属性值的属性上使用
 step1:设置默认的font-size变量 
 $browser-default-font-size: 16px !default; //变量的值可以根据自己需求定义
@@ -25,4 +25,7 @@ html {
   font-size: 16px; }
 
 .header {
-  font-size: 0.75rem; }
+  font-size: 0.75rem; 
+  }
+
+sass实现px转rem的方法二：

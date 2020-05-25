@@ -1,0 +1,28 @@
+sass实现px转rem的方法：
+//只能在拥有一个属性值的属性上使用
+step1:设置默认的font-size变量 
+$browser-default-font-size: 16px !default; //变量的值可以根据自己需求定义
+step2:在html根元素中声明font-size
+html {
+    font-size: $browser-default-font-size;
+}
+step3:使用@function进行px转rem的计算：
+@functino PxToRem($px){
+    @return $px / $browser-default-font-size * 1rem
+}
+
+rem的使用：
+//SCSS
+html {
+    font-size: $browser-default-font-size;
+}
+.header {
+    font-size: pxTorem(12px);
+}
+
+//CSS
+html {
+  font-size: 16px; }
+
+.header {
+  font-size: 0.75rem; }

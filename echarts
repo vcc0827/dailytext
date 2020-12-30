@@ -1,0 +1,49 @@
+<template>
+  <div :id="echartSetting.id"></div>
+</template>
+
+<script>
+export default {
+  props: {
+    echartSetting: {
+      type: Object, //传入类型
+      required: true //必须传值
+    }
+  },
+  data() {
+    return {
+      myChart:null
+    }
+  },
+  watch: {
+    echartSetting: function (newData) {
+      this.Init()
+    }
+  },
+  methods: {
+    Init() {
+      let _self = this
+      let echarts = require('echarts')
+      if(_self.myChart){
+        _self.myChart.dispose();//释放上次所赋值的内容
+        _self.myChart = null;
+      }
+      // 基于准备好的dom，初始化echarts实例
+      _self.myChart = echarts.init(document.getElementById(_self.echartSetting.id));
+      // 绘制图表
+      _self.myChart.setOption(_self.getSetting());
+    },
+    getSetting() {
+      let _self = this
+      return this.echartSetting.setting
+    },
+
+  },
+  mounted() {
+    this.Init()
+  }
+}
+</script>
+
+<style>
+</style>
